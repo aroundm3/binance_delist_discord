@@ -34,12 +34,6 @@ type Link struct {
 	Title string
 }
 
-<<<<<<< HEAD
-func init() {
-	zerolog.SetGlobalLevel(zerolog.InfoLevel)
-}
-
-=======
 type ListItem struct {
 	Spans []SpanItem
 }
@@ -52,7 +46,6 @@ func init() {
 	zerolog.SetGlobalLevel(zerolog.InfoLevel)
 }
 
->>>>>>> 0e221a008fa88eacffa50cac9086f1d8586e0477
 func main() {
 	// loadBotsData()
 	// openLocalBlacklist()
@@ -83,11 +76,7 @@ func main() {
 }
 
 func getDelistTokens(ctx context.Context) {
-<<<<<<< HEAD
-	// classPListCoins := "css-zwb0rk"
-=======
 	classPListCoins := "css-zwb0rk"
->>>>>>> 0e221a008fa88eacffa50cac9086f1d8586e0477
 	newBlacklist := []string{}
 	newProcessed := []string{}
 
@@ -104,11 +93,7 @@ func getDelistTokens(ctx context.Context) {
 
 	links := extractLinks(htmlSource)
 
-<<<<<<< HEAD
-	// countNotice := 5
-=======
 	countNotice := 5
->>>>>>> 0e221a008fa88eacffa50cac9086f1d8586e0477
 	for _, link := range links {
 		title := strings.ToUpper(link.Title)
 		if title != "" && !contains(hasBeenProcessed, title) && !contains(newProcessed, title) {
@@ -124,36 +109,6 @@ func getDelistTokens(ctx context.Context) {
 						newBlacklist = append(newBlacklist, blacklist)
 					}
 				}
-<<<<<<< HEAD
-			}
-			//  else if strings.Contains(title, "NOTICE OF REMOVAL OF ") && !strings.Contains(title, "MARGIN") && countNotice > 0 {
-			// 	countNotice--
-			// 	linkURL := fmt.Sprintf("https://www.binance.com%s", link.Href)
-			// 	err := chromedp.Run(ctx,
-			// 		chromedp.Navigate(linkURL),
-			// 		chromedp.OuterHTML("html", &htmlSource),
-			// 	)
-			// 	if err != nil {
-			// 		log.Println("Failed to navigate to link:", err)
-			// 		continue
-			// 	}
-			// 	lis := extractListItems(htmlSource, classPListCoins)
-			// 	for _, li := range lis {
-			// 		for _, span := range li.Spans {
-			// 			if strings.Contains(span.Text, "/") {
-			// 				line := strings.Replace(span.Text, ":", "", 1)
-			// 				arrCoins := strings.Split(line, ", ")
-			// 				for _, coin := range arrCoins {
-			// 					coin = strings.TrimSpace(coin)
-			// 					if !contains(tokens, coin) && !contains(newBlacklist, coin) {
-			// 						newBlacklist = append(newBlacklist, coin)
-			// 					}
-			// 				}
-			// 			}
-			// 		}
-			// 	}
-			// }
-=======
 			} else if strings.Contains(title, "NOTICE OF REMOVAL OF ") && !strings.Contains(title, "MARGIN") && countNotice > 0 {
 				countNotice--
 				linkURL := fmt.Sprintf("https://www.binance.com%s", link.Href)
@@ -181,7 +136,6 @@ func getDelistTokens(ctx context.Context) {
 					}
 				}
 			}
->>>>>>> 0e221a008fa88eacffa50cac9086f1d8586e0477
 		}
 	}
 
@@ -218,12 +172,6 @@ func extractLinks(html string) []Link {
 	return links
 }
 
-<<<<<<< HEAD
-// func extractListItems(html string, className string) []ListItem {
-// 	// Implement logic to extract list items from HTML
-// 	// Return a slice of ListItem structs
-// }
-=======
 func extractListItems(html string, className string) []ListItem {
 	var listItems []ListItem
 
@@ -243,7 +191,6 @@ func extractListItems(html string, className string) []ListItem {
 
 	return listItems
 }
->>>>>>> 0e221a008fa88eacffa50cac9086f1d8586e0477
 
 func contains(slice []string, item string) bool {
 	for _, a := range slice {
@@ -305,11 +252,7 @@ func saveLocalProcessed() {
 		"processed": hasBeenProcessed,
 	}
 	jsonData, _ := json.Marshal(newProcessed)
-<<<<<<< HEAD
-	ioutil.WriteFile(pathProcessedFile, jsonData, 0644)
-=======
 	os.WriteFile(pathProcessedFile, jsonData, 0644)
->>>>>>> 0e221a008fa88eacffa50cac9086f1d8586e0477
 }
 
 func loadBotsData() {
