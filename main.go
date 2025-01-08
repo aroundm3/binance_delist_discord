@@ -120,21 +120,49 @@ func getDelistTokens(ctx context.Context) {
 					log.Println("Failed to navigate to link:", err)
 					continue
 				}
-				lis := extractListItems(htmlSource, classPListCoins)
-				for _, li := range lis {
-					for _, span := range li.Spans {
-						if strings.Contains(span.Text, "/") {
-							line := strings.Replace(span.Text, ":", "", 1)
+
+				doc, err := goquery.NewDocumentFromReader(strings.NewReader(htmlSource))
+				if err != nil {
+					log.Println("Error parsing HTML:", err)
+					continue
+				}
+
+				doc.Find("p" + classPListCoins).Each(func(index int, p *goquery.Selection) {
+					fmt.Println("dgvdgavshdv: ", p)
+					p.Find("span" + "richtext-text").Each(func(i int, span *goquery.Selection) {
+
+						if strings.Contains(span.Text(), "/") {
+							line := strings.Replace(span.Text(), ":", "", 1)
 							arrCoins := strings.Split(line, ", ")
 							for _, coin := range arrCoins {
 								coin = strings.TrimSpace(coin)
+
+								fmt.Println("hbđahs", coin)
 								if !contains(tokens, coin) && !contains(newBlacklist, coin) {
 									newBlacklist = append(newBlacklist, coin)
 								}
 							}
 						}
-					}
-				}
+					})
+				})
+				// lis := extractListItems(htmlSource, classPListCoins)
+				// fmt.Println("bdahjsb lis: ", lis)
+				// for _, li := range lis {
+				// 	for _, span := range li.Spans {
+				// 		if strings.Contains(span.Text, "/") {
+				// 			line := strings.Replace(span.Text, ":", "", 1)
+				// 			arrCoins := strings.Split(line, ", ")
+				// 			for _, coin := range arrCoins {
+				// 				coin = strings.TrimSpace(coin)
+
+				// 				fmt.Println("hbđahs %s", coin)
+				// 				if !contains(tokens, coin) && !contains(newBlacklist, coin) {
+				// 					newBlacklist = append(newBlacklist, coin)
+				// 				}
+				// 			}
+				// 		}
+				// 	}
+				// }
 			}
 		}
 	}
