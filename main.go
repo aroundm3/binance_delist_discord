@@ -127,9 +127,9 @@ func getDelistTokens(ctx context.Context) {
 					continue
 				}
 
-				doc.Find("p" + classPListCoins).Each(func(index int, p *goquery.Selection) {
+				doc.Find("p." + classPListCoins).Each(func(index int, p *goquery.Selection) {
 					fmt.Println("dgvdgavshdv: ", p)
-					p.Find("span" + "richtext-text").Each(func(i int, span *goquery.Selection) {
+					p.Find("span." + "richtext-text").Each(func(i int, span *goquery.Selection) {
 
 						if strings.Contains(span.Text(), "/") {
 							line := strings.Replace(span.Text(), ":", "", 1)

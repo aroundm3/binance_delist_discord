@@ -1,1 +1,30 @@
-{"pair_blacklist":["AKRO/.*","BLZ/.*","WRX/.*"]}
+{
+  "pair_blacklist": [
+    "AXL/FDUSD",
+    "C98/BTC",
+    "ENJ/ETH",
+    "where applicable. Users are strongly advised to update and/or cancel their Spot Trading Bots prior to the cessation of Spot Trading Bots services to avoid any potential losses.",
+    "ACE/BTC",
+    "ACM/TRY",
+    "BOME/BTC",
+    "DYM/BTC",
+    "MTL/TRY",
+    "PIXEL/BNB",
+    "PIXEL/FDUSD",
+    "QKC/BTC",
+    "RAD/BTC",
+    "REZ/FDUSD",
+    "TUSD/TRY",
+    "AKRO/.*",
+    "BLZ/.*",
+    "WRX/.*",
+    "BNT/ETH",
+    "CYBER/TUSD",
+    "EUR/AEUR",
+    "HMSTR/BNB",
+    "SUI/TUSD",
+    "DCR/BTC",
+    "PEPE/TUSD",
+    "ZEN/ETH"
+  ]
+}
